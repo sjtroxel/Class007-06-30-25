@@ -10,33 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_29_020735) do
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "title"
-    t.text "body"
-    t.boolean "published"
-    t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id", null: false
+ActiveRecord::Schema[8.0].define(version: 2025_06_29_020126) do
+  create_table "employee_details", force: :cascade do |t|
+    t.integer "employee_id", null: false
     t.text "bio"
+    t.integer "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["employee_id"], name: "index_employee_details_on_employee_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "posts", "users"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "employee_details", "employees"
 end

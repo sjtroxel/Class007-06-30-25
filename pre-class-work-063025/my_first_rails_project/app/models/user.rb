@@ -12,6 +12,7 @@ class User < ApplicationRecord
    before_create :downcase_email
 
   has_one :profile
+  has_many :posts
 
   private
 
